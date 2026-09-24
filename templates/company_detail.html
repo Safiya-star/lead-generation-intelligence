@@ -3,119 +3,203 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Company Intelligence Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ company["company_name"] }} | Company Intelligence</title>
+
+    <!-- Application stylesheet -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
 </head>
 
 <body>
 
-    <!-- Company profile heading -->
-    <h1>{{ company["company_name"] }}</h1>
+    <main class="container">
 
-    <!-- Basic company information -->
-    <h2>Company Information</h2>
+        <!-- Navigation -->
+        <div class="profile-navigation">
+            <a href="/" class="back-link">← Back to Dashboard</a>
+        </div>
 
-    <p><strong>Industry:</strong> {{ company["industry"] }}</p>
-    <p><strong>Location:</strong> {{ company["city"] }}, {{ company["state"] }}</p>
-    <p><strong>Employees:</strong> {{ company["employee_count"] }}</p>
-    <p><strong>Status:</strong> {{ company["status"] }}</p>
+        <!-- Company header -->
+        <div class="company-header">
+            <div>
+                <p class="section-label">COMPANY INTELLIGENCE PROFILE</p>
+                <h1>{{ company["company_name"] }}</h1>
+                <p class="page-subtitle">
+                    {{ company["industry"] }} •
+                    {{ company["city"] }}, {{ company["state"] }}
+                </p>
+            </div>
 
-    <!-- Company contacts -->
-    <h2>Contacts</h2>
+            <span class="status-badge">
+                {{ company["status"] }}
+            </span>
+        </div>
 
-    {% for contact in contacts %}
+        <!-- Company information -->
+        <section>
+            <h2>Company Information</h2>
 
-    <p>
-        <strong>
-            {{ contact["first_name"] }} {{ contact["last_name"] }}
-        </strong>
-        — {{ contact["job_title"] }}
-        — {{ contact["email"] }}
-    </p>
+            <div class="info-grid">
+                <div class="info-card">
+                    <span class="info-label">Industry</span>
+                    <strong>{{ company["industry"] }}</strong>
+                </div>
 
-    {% endfor %}
+                <div class="info-card">
+                    <span class="info-label">Location</span>
+                    <strong>
+                        {{ company["city"] }}, {{ company["state"] }}
+                    </strong>
+                </div>
 
-    <!-- Intelligence signals -->
-    <h2>Detected Signals</h2>
+                <div class="info-card">
+                    <span class="info-label">Employees</span>
+                    <strong>{{ company["employee_count"] }}</strong>
+                </div>
 
-    <table border="1">
-        <tr>
-            <th>Signal</th>
-            <th>Category</th>
-            <th>Result</th>
-            <th>Confidence</th>
-        </tr>
+                <div class="info-card">
+                    <span class="info-label">Status</span>
+                    <strong>{{ company["status"] }}</strong>
+                </div>
+            </div>
+        </section>
 
-        {% for signal in signals %}
-        <tr>
-            <td>{{ signal["signal_name"] }}</td>
-            <td>{{ signal["signal_category"] }}</td>
-            <td>{{ signal["signal_value"] }}</td>
-            <td>{{ signal["confidence"] }}</td>
-        </tr>
-        {% endfor %}
+        <!-- Company contacts -->
+        <section>
+            <h2>Contacts</h2>
 
-    </table>
+            <div class="content-card">
+                {% for contact in contacts %}
+                <p class="contact-row">
+                    <strong>
+                        {{ contact["first_name"] }}
+                        {{ contact["last_name"] }}
+                    </strong>
 
-    <!-- Lead score -->
-    <h2>Lead Score</h2>
+                    <span>{{ contact["job_title"] }}</span>
 
-    {% if lead_score %}
+                    <span>{{ contact["email"] }}</span>
+                </p>
+                {% endfor %}
+            </div>
+        </section>
 
-    <p>
-        <strong>Score:</strong> {{ lead_score["score"] }}/100
-    </p>
+        <!-- Intelligence signals -->
+        <section>
+            <h2>Detected Signals</h2>
 
-    <p>
-        <strong>Priority:</strong> {{ lead_score["priority_level"] }}
-    </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Signal</th>
+                        <th>Category</th>
+                        <th>Result</th>
+                        <th>Confidence</th>
+                    </tr>
+                </thead>
 
-    <p>
-        <strong>Reason:</strong> {{ lead_score["score_reason"] }}
-    </p>
+                <tbody>
+                    {% for signal in signals %}
+                    <tr>
+                        <td>{{ signal["signal_name"] }}</td>
+                        <td>{{ signal["signal_category"] }}</td>
+                        <td>
+                            {% if signal["signal_value"] == "Detected" %}
+                                <span class="signal-badge detected">Detected</span>
+                            {% else %}
+                                <span class="signal-badge not-detected">
+                                    {{ signal["signal_value"] }}
+                                </span>
+                            {% endif %}
+                        </td>
+                        <td>{{ signal["confidence"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
 
-    {% else %}
+        <!-- Lead score -->
+        <section>
+            <h2>Lead Score</h2>
 
-    <p>This company has not been scored yet.</p>
+            {% if lead_score %}
+            <div class="lead-score-card">
 
-    {% endif %}
-    
-    <!-- Identified opportunities -->
-    <h2>Opportunities</h2>
+                <div class="score-number">
+                    {{ lead_score["score"] }}
+                    <span>/100</span>
+                </div>
 
-    {% if opportunities %}
+                <div class="score-details">
+                    <p>
+                        <strong>Priority:</strong>
+                        {{ lead_score["priority_level"] }}
+                    </p>
 
-        {% for opportunity in opportunities %}
+                    <p>
+                        <strong>Reason:</strong>
+                        {{ lead_score["score_reason"] }}
+                    </p>
+                </div>
 
-        <h3>{{ opportunity["opportunity_type"] }}</h3>
+            </div>
+            {% else %}
+            <div class="content-card">
+                <p>This company has not been scored yet.</p>
+            </div>
+            {% endif %}
+        </section>
 
-        <p>
-            <strong>Recommended Service:</strong>
-            {{ opportunity["recommended_service"] }}
-        </p>
+        <!-- Identified opportunities -->
+        <section>
+            <h2>Opportunities</h2>
 
-        <p>
-            <strong>Priority:</strong>
-            {{ opportunity["priority"] }}
-        </p>
+            {% if opportunities %}
+                {% for opportunity in opportunities %}
 
-        <p>
-            <strong>Confidence:</strong>
-            {{ opportunity["confidence"] }}
-        </p>
+                <div class="opportunity-card">
 
-        <p>
-            <strong>Why:</strong>
-            {{ opportunity["evidence_summary"] }}
-        </p>
+                    <p class="section-label">
+                        {{ opportunity["opportunity_type"] }}
+                    </p>
 
-        {% endfor %}
+                    <h3>
+                        {{ opportunity["recommended_service"] }}
+                    </h3>
 
-    {% else %}
+                    <div class="opportunity-meta">
+                        <span>
+                            <strong>Priority:</strong>
+                            {{ opportunity["priority"] }}
+                        </span>
 
-    <p>No opportunities have been identified yet.</p>
+                        <span>
+                            <strong>Confidence:</strong>
+                            {{ opportunity["confidence"] }}
+                        </span>
+                    </div>
 
-    {% endif %}
+                    <p class="evidence">
+                        <strong>Why:</strong>
+                        {{ opportunity["evidence_summary"] }}
+                    </p>
+
+                </div>
+
+                {% endfor %}
+            {% else %}
+            <div class="content-card">
+                <p>No opportunities have been identified yet.</p>
+            </div>
+            {% endif %}
+        </section>
+
+    </main>
 
 </body>
-
 </html>

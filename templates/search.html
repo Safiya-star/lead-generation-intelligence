@@ -3,53 +3,137 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Find Leads</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Find Leads | Lead Intelligence</title>
+
+    <!-- Application stylesheet -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
 </head>
 
 <body>
 
-    <!-- Lead search form -->
-    <h1>Find Leads</h1>
+    <main class="container">
 
-    <form method="POST">
+        <!-- Navigation -->
+        <div class="profile-navigation">
+            <a href="/" class="back-link">← Back to Dashboard</a>
+        </div>
 
-        <p>
-            <label for="industry">Industry:</label>
-            <input type="text" id="industry" name="industry" required>
+        <!-- Page heading -->
+        <p class="section-label">LEAD DISCOVERY</p>
+        <h1>Find New Leads</h1>
+
+        <p class="page-subtitle">
+            Define your target criteria to begin a business discovery search.
         </p>
 
-        <p>
-            <label for="location">Location:</label>
-            <input type="text" id="location" name="location" required>
-        </p>
+        <!-- Lead search form -->
+        <div class="search-card">
 
-        <p>
-            <label for="employee_min">Minimum Employees:</label>
-            <input type="number" id="employee_min" name="employee_min">
-        </p>
+            <form method="POST">
 
-        <p>
-            <label for="employee_max">Maximum Employees:</label>
-            <input type="number" id="employee_max" name="employee_max">
-        </p>
+                <div class="form-group">
+                    <label for="industry">Industry</label>
+                    <input
+                        type="text"
+                        id="industry"
+                        name="industry"
+                        placeholder="e.g. Solar"
+                        required
+                    >
+                </div>
 
-        <button type="submit">Find Leads</button>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        placeholder="e.g. Phoenix, AZ"
+                        required
+                    >
+                </div>
 
-    </form>
+                <div class="employee-grid">
 
-    {% if search_data %}
+                    <div class="form-group">
+                        <label for="employee_min">
+                            Minimum Employees
+                        </label>
 
-    <h2>Search Received</h2>
+                        <input
+                            type="number"
+                            id="employee_min"
+                            name="employee_min"
+                            min="0"
+                            placeholder="e.g. 5"
+                        >
+                    </div>
 
-    <p><strong>Industry:</strong> {{ search_data["industry"] }}</p>
-    <p><strong>Location:</strong> {{ search_data["location"] }}</p>
-    <p>
-        <strong>Employee Range:</strong>
-        {{ search_data["employee_min"] }} - {{ search_data["employee_max"] }}
-    </p>
+                    <div class="form-group">
+                        <label for="employee_max">
+                            Maximum Employees
+                        </label>
 
-    {% endif %}
+                        <input
+                            type="number"
+                            id="employee_max"
+                            name="employee_max"
+                            min="0"
+                            placeholder="e.g. 100"
+                        >
+                    </div>
+
+                </div>
+
+                <button type="submit" class="primary-button">
+                    Find Leads
+                </button>
+
+            </form>
+
+        </div>
+
+        {% if search_data %}
+
+        <section class="search-results">
+            <h2>Search Received</h2>
+
+            <div class="content-card">
+
+                <div class="search-summary-grid">
+
+                    <div>
+                        <span class="info-label">Industry</span>
+                        <strong>{{ search_data["industry"] }}</strong>
+                    </div>
+
+                    <div>
+                        <span class="info-label">Location</span>
+                        <strong>{{ search_data["location"] }}</strong>
+                    </div>
+
+                    <div>
+                        <span class="info-label">Employee Range</span>
+                        <strong>
+                            {{ search_data["employee_min"] }}
+                            -
+                            {{ search_data["employee_max"] }}
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        {% endif %}
+
+    </main>
 
 </body>
-
 </html>

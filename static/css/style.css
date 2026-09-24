@@ -1,0 +1,399 @@
+/* ---------- Page Foundation ---------- */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f8;
+    color: #1f2937;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+h1 {
+    margin: 0 0 8px;
+    font-size: 32px;
+    color: #111827;
+}
+
+.page-subtitle {
+    margin: 0 0 30px;
+    color: #6b7280;
+    font-size: 16px;
+}
+
+/* ---------- Dashboard Table ---------- */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+thead {
+    background-color: #1f2937;
+    color: #ffffff;
+}
+
+th,
+td {
+    padding: 16px 18px;
+    text-align: left;
+}
+
+th {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+tbody tr {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+/* ---------- Company Links ---------- */
+
+td a {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Dashboard Actions ---------- */
+
+.dashboard-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 18px;
+}
+
+.primary-button {
+    display: inline-block;
+    padding: 11px 18px;
+    background-color: #2563eb;
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 7px;
+}
+
+.primary-button:hover {
+    background-color: #1d4ed8;
+}
+
+/* ---------- Table Layout ---------- */
+
+th:nth-child(1),
+td:nth-child(1) {
+    width: 28%;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+    width: 20%;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+    width: 22%;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+    width: 15%;
+}
+
+th:nth-child(5),
+td:nth-child(5) {
+    width: 15%;
+}
+
+/* ---------- Status Badges ---------- */
+
+.status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #dbeafe;
+    color: #1e40af;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 999px;
+}
+
+/* ---------- Company Profile ---------- */
+
+.profile-navigation {
+    margin-bottom: 18px;
+}
+
+.back-link {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.company-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.company-header .page-subtitle {
+    margin-bottom: 0;
+}
+
+.section-label {
+    margin: 0 0 8px;
+    color: #6b7280;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+}
+
+section {
+    margin-bottom: 35px;
+}
+
+section h2 {
+    margin-bottom: 16px;
+    font-size: 22px;
+    color: #111827;
+}
+
+
+/* ---------- Company Information ---------- */
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.info-card,
+.content-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 18px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.info-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.info-label {
+    color: #6b7280;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+/* ---------- Contacts ---------- */
+
+.contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    margin: 0;
+}
+
+
+/* ---------- Lead Score ---------- */
+
+.lead-score-card {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 24px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.score-number {
+    min-width: 115px;
+    font-size: 42px;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.score-number span {
+    font-size: 18px;
+    color: #6b7280;
+}
+
+.score-details p {
+    margin: 6px 0;
+    line-height: 1.5;
+}
+
+
+/* ---------- Opportunities ---------- */
+
+.opportunity-card {
+    padding: 22px;
+    margin-bottom: 16px;
+    background-color: #ffffff;
+    border-left: 4px solid #2563eb;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.opportunity-card h3 {
+    margin: 0 0 14px;
+    font-size: 20px;
+}
+
+.opportunity-meta {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 14px;
+}
+
+.evidence {
+    margin: 0;
+    line-height: 1.5;
+}
+
+
+/* ---------- Responsive Layout ---------- */
+
+@media (max-width: 700px) {
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .company-header,
+    .lead-score-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+/* ---------- Signal Badges ---------- */
+
+.signal-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.signal-badge.detected {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.signal-badge.not-detected {
+    background-color: #f3f4f6;
+    color: #4b5563;
+}
+
+/* ---------- Lead Search ---------- */
+
+.search-card {
+    max-width: 700px;
+    padding: 28px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    font: inherit;
+    color: #111827;
+    background-color: #ffffff;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.employee-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+button.primary-button {
+    border: none;
+    cursor: pointer;
+    font: inherit;
+}
+
+.search-results {
+    max-width: 700px;
+    margin-top: 32px;
+}
+
+.search-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.search-summary-grid > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+@media (max-width: 700px) {
+    .employee-grid,
+    .search-summary-grid {
+        grid-template-columns: 1fr;
+    }
+}

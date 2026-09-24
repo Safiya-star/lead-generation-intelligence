@@ -1,8 +1,26 @@
 # Lead Generation Intelligence System
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![Flask](https://img.shields.io/badge/Flask-3.1-black)
+![SQLite](https://img.shields.io/badge/Database-SQLite-blue)
+![API](https://img.shields.io/badge/API-Foursquare%20%7C%20Geoapify-green)
+![Status](https://img.shields.io/badge/Status-Active%20Development-orange)
+
+
 
 An in-development business intelligence and lead generation platform designed to discover, evaluate, and prioritize small and mid-sized business prospects.
 
 The system combines external business data, relational data modeling, and business intelligence workflows to move beyond traditional lead lists. Its goal is to identify businesses, evaluate observable signals, prioritize potential leads, and connect identified business needs with relevant technology and automation solutions.
+
+### Quick Navigation
+
+[Business Problem](#business-problem) •
+[Solution Architecture](#solution-architecture) •
+[Technology Stack](#technology-stack) •
+[Implemented Functionality](#implemented-functionality) •
+[System in Action](#system-in-action) •
+[Intelligence Model](#intelligence-model) •
+[Development Roadmap](#development-roadmap) •
+[Running Locally](#running-locally)
 
 ## Project Status
 
@@ -106,6 +124,26 @@ The current database supports:
 - Business opportunities
 - Lead searches
 - Search results
+
+## System in Action
+
+### Lead Intelligence Dashboard
+
+The dashboard provides a centralized view of discovered companies and direct access to individual company intelligence profiles.
+
+![Lead Intelligence Dashboard](docs/Lead-intelligence-dashboard.png)
+
+### Company Intelligence Profile
+
+Company profiles combine business information, contacts, detected signals, lead scoring, and identified opportunities in a single intelligence view.
+
+![Company Intelligence Profile](docs/Company-detail.png)
+
+### Lead Discovery
+
+The lead discovery interface captures target industry, location, and company-size criteria and records searches for use in the developing discovery workflow.
+
+![Find New Leads](docs/Find-new-leads.png)
 
 ## Intelligence Model
 

@@ -3,39 +3,75 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Lead Intelligence Dashboard</title>
-    
+
+    <!-- Application stylesheet -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
 </head>
 
 <body>
 
-    <!-- Dashboard heading -->
-    <h1>Lead Intelligence Dashboard</h1>
+    <main class="container">
 
-    <!-- Display companies from the database -->
-    <table border="1">
-        <tr>
-            <th>Company</th>
-            <th>Industry</th>
-            <th>Location</th>
-            <th>Employees</th>
-            <th>Status</th>
-        </tr>
+        <!-- Dashboard heading -->
+        <h1>Lead Intelligence Dashboard</h1>
 
-        {% for company in companies %}
-        <tr>
-            <td>
-                <a href="/company/{{ company['company_id'] }}">
-                    {{ company["company_name"] }}
-                </a>
-            </td>
-            <td>{{ company["industry"] }}</td>
-            <td>{{ company["city"] }}, {{ company["state"] }}</td>
-            <td>{{ company["employee_count"] }}</td>
-            <td>{{ company["status"] }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+        <p class="page-subtitle">
+            Review discovered companies and open a company profile for additional intelligence.
+        </p>
+
+        <!-- Dashboard actions -->
+        <div class="dashboard-actions">
+            <a href="/search" class="primary-button">
+                Find New Leads
+            </a>
+        </div>
+
+        <!-- Display companies from the database -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Industry</th>
+                    <th>Location</th>
+                    <th>Employees</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for company in companies %}
+                <tr>
+                    <td>
+                        <a href="/company/{{ company['company_id'] }}">
+                            {{ company["company_name"] }}
+                        </a>
+                    </td>
+
+                    <td>{{ company["industry"] }}</td>
+
+                    <td>
+                        {{ company["city"] }}, {{ company["state"] }}
+                    </td>
+
+                    <td>{{ company["employee_count"] }}</td>
+
+                    <td>
+                        <span class="status-badge">
+                            {{ company["status"] }}
+                        </span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </main>
+
 </body>
-
 </html>
