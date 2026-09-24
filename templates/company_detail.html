@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Company Intelligence Profile</title>
+</head>
+
+<body>
+
+    <!-- Company profile heading -->
+    <h1>{{ company["company_name"] }}</h1>
+
+    <!-- Basic company information -->
+    <h2>Company Information</h2>
+
+    <p><strong>Industry:</strong> {{ company["industry"] }}</p>
+    <p><strong>Location:</strong> {{ company["city"] }}, {{ company["state"] }}</p>
+    <p><strong>Employees:</strong> {{ company["employee_count"] }}</p>
+    <p><strong>Status:</strong> {{ company["status"] }}</p>
+
+    <!-- Company contacts -->
+    <h2>Contacts</h2>
+
+    {% for contact in contacts %}
+
+    <p>
+        <strong>
+            {{ contact["first_name"] }} {{ contact["last_name"] }}
+        </strong>
+        — {{ contact["job_title"] }}
+        — {{ contact["email"] }}
+    </p>
+
+    {% endfor %}
+
+    <!-- Intelligence signals -->
+    <h2>Detected Signals</h2>
+
+    <table border="1">
+        <tr>
+            <th>Signal</th>
+            <th>Category</th>
+            <th>Result</th>
+            <th>Confidence</th>
+        </tr>
+
+        {% for signal in signals %}
+        <tr>
+            <td>{{ signal["signal_name"] }}</td>
+            <td>{{ signal["signal_category"] }}</td>
+            <td>{{ signal["signal_value"] }}</td>
+            <td>{{ signal["confidence"] }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <!-- Lead score -->
+    <h2>Lead Score</h2>
+
+    {% if lead_score %}
+
+    <p>
+        <strong>Score:</strong> {{ lead_score["score"] }}/100
+    </p>
+
+    <p>
+        <strong>Priority:</strong> {{ lead_score["priority_level"] }}
+    </p>
+
+    <p>
+        <strong>Reason:</strong> {{ lead_score["score_reason"] }}
+    </p>
+
+    {% else %}
+
+    <p>This company has not been scored yet.</p>
+
+    {% endif %}
+    
+    <!-- Identified opportunities -->
+    <h2>Opportunities</h2>
+
+    {% if opportunities %}
+
+        {% for opportunity in opportunities %}
+
+        <h3>{{ opportunity["opportunity_type"] }}</h3>
+
+        <p>
+            <strong>Recommended Service:</strong>
+            {{ opportunity["recommended_service"] }}
+        </p>
+
+        <p>
+            <strong>Priority:</strong>
+            {{ opportunity["priority"] }}
+        </p>
+
+        <p>
+            <strong>Confidence:</strong>
+            {{ opportunity["confidence"] }}
+        </p>
+
+        <p>
+            <strong>Why:</strong>
+            {{ opportunity["evidence_summary"] }}
+        </p>
+
+        {% endfor %}
+
+    {% else %}
+
+    <p>No opportunities have been identified yet.</p>
+
+    {% endif %}
+
+</body>
+
+</html>

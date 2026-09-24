@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lead Intelligence Dashboard</title>
+    
+</head>
+
+<body>
+
+    <!-- Dashboard heading -->
+    <h1>Lead Intelligence Dashboard</h1>
+
+    <!-- Display companies from the database -->
+    <table border="1">
+        <tr>
+            <th>Company</th>
+            <th>Industry</th>
+            <th>Location</th>
+            <th>Employees</th>
+            <th>Status</th>
+        </tr>
+
+        {% for company in companies %}
+        <tr>
+            <td>
+                <a href="/company/{{ company['company_id'] }}">
+                    {{ company["company_name"] }}
+                </a>
+            </td>
+            <td>{{ company["industry"] }}</td>
+            <td>{{ company["city"] }}, {{ company["state"] }}</td>
+            <td>{{ company["employee_count"] }}</td>
+            <td>{{ company["status"] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

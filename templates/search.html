@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Find Leads</title>
+</head>
+
+<body>
+
+    <!-- Lead search form -->
+    <h1>Find Leads</h1>
+
+    <form method="POST">
+
+        <p>
+            <label for="industry">Industry:</label>
+            <input type="text" id="industry" name="industry" required>
+        </p>
+
+        <p>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required>
+        </p>
+
+        <p>
+            <label for="employee_min">Minimum Employees:</label>
+            <input type="number" id="employee_min" name="employee_min">
+        </p>
+
+        <p>
+            <label for="employee_max">Maximum Employees:</label>
+            <input type="number" id="employee_max" name="employee_max">
+        </p>
+
+        <button type="submit">Find Leads</button>
+
+    </form>
+
+    {% if search_data %}
+
+    <h2>Search Received</h2>
+
+    <p><strong>Industry:</strong> {{ search_data["industry"] }}</p>
+    <p><strong>Location:</strong> {{ search_data["location"] }}</p>
+    <p>
+        <strong>Employee Range:</strong>
+        {{ search_data["employee_min"] }} - {{ search_data["employee_max"] }}
+    </p>
+
+    {% endif %}
+
+</body>
+
+</html>

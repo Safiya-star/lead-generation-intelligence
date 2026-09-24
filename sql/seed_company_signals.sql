@@ -1,0 +1,89 @@
+INSERT INTO company_signals (
+    company_id,
+    signal_id,
+    signal_value,
+    confidence,
+    source_url,
+    date_detected
+)
+VALUES
+(
+    1,
+    1,
+    'Not Detected',
+    'High',
+    'https://example-accounting.com',
+    '2026-09-10'
+),
+(
+    1,
+    2,
+    'Not Detected',
+    'High',
+    'https://example-accounting.com',
+    '2026-09-10'
+),
+(
+    1,
+    3,
+    'Detected',
+    'High',
+    'https://example-accounting.com/contact',
+    '2026-09-10'
+),
+(
+    1,
+    4,
+    'Detected',
+    'High',
+    'https://example-accounting.com',
+    '2026-09-10'
+),
+(
+    1,
+    5,
+    'Not Detected',
+    'Medium',
+    'https://example-accounting.com',
+    '2026-09-10'
+),
+(
+    2,
+    1,
+    'Detected',
+    'High',
+    'https://example.solar.com',
+    '2026-09-10'
+),
+(
+    2,
+    2,
+    'Not Detected',
+    'High',
+    'https://example.solar.com',
+    '2026-09-10'
+),
+(
+    2,
+    3,
+    'Detected',
+    'High',
+    'https://example.solar.com/contact',
+    '2026-09-10'
+),
+(
+    2,
+    4,
+    'Detected',
+    'High',
+    'https://example.solar.com',
+    '2026-09-10'
+),
+(
+    2,
+    5,
+    'Not Detected',
+    'Medium',
+    'https://example.solar.com',
+    '2026-09-10'
+);
